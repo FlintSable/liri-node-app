@@ -13,6 +13,12 @@ let tweet = (user, options) => {
 	console.log(process.argv);
 	console.log("jello")
 }
+let noodleTweet = {screen_name: 'nodejs'};
+twitterKeys.get('statuses/user_timeline', params, function(error, tweets, response) {
+  if (!error) {
+    console.log(tweets);
+  }
+});
 
 program
 	.command('tweet <user> [default]')
@@ -22,5 +28,6 @@ program
 	.action(tweet);
 
 program 
-	.command('noodle <>')
+	.command('noodle []')
+	.action(noodleTweet);
 program.parse(process.argv);
