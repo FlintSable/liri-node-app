@@ -37,7 +37,7 @@ let noodleTweet = {screen_name: 'Nicholaor'};
 // 	console.log(results);
 // })
 
-client.get('statuses/user_timeline', function(error, tweets, response) {
+client.get('statuses/user_timeline', (error, tweets, response) => {
   if (!error) {
     console.log(tweets);
     // console.log("asdfa");
