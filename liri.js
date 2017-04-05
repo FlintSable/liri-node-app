@@ -2,6 +2,7 @@
 
 'use strict';
 
+const https = require("https");
 const program = require('commander');
 const request = require('request');
 const credentials = require('./k/keys').twitterKeys;
@@ -19,7 +20,6 @@ var client = new Twitter({
     access_token_key: credentials.access_token_key,
     access_token_secret: credentials.access_token_secret,
 });
-// console.log(client);
 console.log('~~~~~~~~~~~~');
 // console.log(credentials.consumer_key);
 
@@ -37,23 +37,22 @@ let noodleTweet = { screen_name: 'Nicholaor' };
 // var st = new StreamTweets(credentials);
 
 function printData(time, date, data) {
+	// should print to console
+	// should append to file
     const viewData = `${time}, ${date}, ${data}`;
-    console.log(viewData)
+    console.log(viewData);
 }
 
-// st.stream('Javascript', function(results){
-// 	console.log(results);
-// })
+
 function getData() {
 
     const request = client.get('statuses/user_timeline', (error, tweets, response) => {
-        if (!error) {
-        	let body = '';
-        	console.log(tweets);
+        if (!error && response.statusCode === 200) {
+        	// console.log(JSON.stringify(response, null, '\t'));
 
-        	response.on('data', tweets =>{
-        		body += data.toString();
-        		console.dir(body);
+        	let body = '';
+        	response.on('tweets', data => {
+        		body += tweets.toString();
         	});
 
         	response.on('end', () => {
@@ -63,36 +62,31 @@ function getData() {
 
 
             // console.dir(tweets[3].text);
-            // for (var i = 0; i < tweetsLocal.length; i++) {
-            //     setInterval(() => { console.log(tweetsLocal[i].text); }, 3000);
-            // }
-            // console.dir(tweets.length);
+            for (var i = 0; i < tweets.length; i++) {
+            		console.log( i + ' ~~~~~~~~~~')
+            		console.log('                 ')
+            		console.log(tweets[i].created_at);
+            		console.log(tweets[i].text);
 
-            // console.log(tweets.text);
+            }
 
-            // console.log("asdfa");
         }
     });
 
-    // setTimeout(() => {
-    //     console.log("somthing");
 
-    // }, 1000);
 
 }
-getData();
-
 
 
 
 // program
-// 	.command('tweet <user> [default]')
+// 	.command('my-tweets [default]')
 // 	.description('get the tweets')
 // 	.option('-a, --all', 'list all files and folders')
 // 	.option('-l, --long', '')
-// 	.action(tweet);
+// 	.action(getData());
 
 // program 
 // 	.command('noodle []')
-// 	.action(noodleTweet);
+// 	.action(console.log('noodleTweet'));
 // program.parse(process.argv);
