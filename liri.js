@@ -20,6 +20,8 @@ var client = new Twitter({
     access_token_key: credentials.access_token_key,
     access_token_secret: credentials.access_token_secret,
 });
+
+const firstArg = process.argv[2];
 console.log('~~~~~~~~~~~~');
 // console.log(credentials.consumer_key);
 
@@ -40,7 +42,7 @@ function printData(time, date, data) {
 	// should print to console
 	// should append to file
     const viewData = `${time}, ${date}, ${data}`;
-    console.log(viewData);
+    // console.log(viewData);
 }
 
 
@@ -78,7 +80,11 @@ function getData() {
 }
 
 
+if(firstArg === "my-tweets"){
+	//working now but would like to use the printData()
+	getData();
 
+}
 // program
 // 	.command('my-tweets [default]')
 // 	.description('get the tweets')
