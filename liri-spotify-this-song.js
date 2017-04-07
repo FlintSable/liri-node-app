@@ -1,6 +1,5 @@
 const spotify = require('spotify');
-console.log(__filename);
-// var program = require('..');
+// console.log(__filename);
 
 
 console.log(process.argv.slice(2));
@@ -13,15 +12,11 @@ function songSearch() {
             console.log('Error occurred: ' + err);
             return;
         } else if (!err) {
-        	console.log(data.tracks.items[0].album.name);
-            console.log(data.tracks.items[1].album.name);
-            var arr = data.tracks.items
-            console.dir(JSON.stringify(arr[0].albums));
-            for(nodes in arr){
-                if(nodes.album === 'black sands'){
-                    console.log(data.tracks[i].album.name + ' this was a match')
-                }
-            }
+            var seachResult = data.tracks.items[0];
+            // console.log(seachResult);
+            console.log(seachResult.name);
+
+     
 
             // var localData = data.tracks.items[0];
             // console.log(localData.album.artists[0].name);
@@ -54,7 +49,7 @@ songSearch();
 
 // var program = require('..');
 
-console.log(__filename);
+// console.log(__filename);
 // console.log(arguments.callee.toString());
 
-console.log(process.argv.slice(2));
+// console.log(process.argv.slice(2));

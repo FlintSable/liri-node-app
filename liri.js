@@ -5,15 +5,7 @@
 const program = require('commander');
 const request = require('request');
 const https = require("https");
-
 console.log('~~~~~~~~~~~~');
-
-function printData(time, date, data) {
-    // should print to console
-    // should append to file
-    const viewData = `${time}, ${date}, ${data}`;
-    // console.log(viewData);
-}
 
 program
  .command('my-tweets [default]', 'gather tweets')
