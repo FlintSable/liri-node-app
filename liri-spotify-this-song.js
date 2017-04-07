@@ -13,7 +13,16 @@ function songSearch() {
             console.log('Error occurred: ' + err);
             return;
         } else if (!err) {
-        	console.log(data.tracks.items);
+        	console.log(data.tracks.items[0].album.name);
+            console.log(data.tracks.items[1].album.name);
+            var arr = data.tracks.items
+            console.dir(JSON.stringify(arr[0].albums));
+            for(nodes in arr){
+                if(nodes.album === 'black sands'){
+                    console.log(data.tracks[i].album.name + ' this was a match')
+                }
+            }
+
             // var localData = data.tracks.items[0];
             // console.log(localData.album.artists[0].name);
 
@@ -41,7 +50,7 @@ songSearch();
 // The song's name
 // A preview link of the song from Spotify
 // The album that the song is from
-=======
+
 
 // var program = require('..');
 

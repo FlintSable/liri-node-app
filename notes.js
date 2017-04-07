@@ -65,3 +65,33 @@ httpRequest.onreadystatechange = () => {
             break;
     }
 };
+
+
+
+// program
+//   .version('0.0.1')
+//   .option('-v, --chdir <path>', 'change the working directory')
+//   .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')
+//   .option('-T, --no-tests', 'ignore test hook');
+
+// program
+//   .command('my-tweets [opt]')
+//   .description('get tweets')
+//   .action(function(env, options){
+//     getData();
+//   });
+
+// program
+//   .command('spotify-this-song <song>')
+//   .description('execute the given remote cmd')
+//   .action(function(song){
+//     console.log(song);
+//   });
+
+// program
+//   .command('nude')
+//   .action(function(env){
+//     console.log('deploying "%s"', env);
+//   });
+
+// program.parse(process.argv);
