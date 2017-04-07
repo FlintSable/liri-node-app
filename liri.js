@@ -2,35 +2,17 @@
 
 'use strict';
 
-const https = require("https");
 const program = require('commander');
 const request = require('request');
-const credentials = require('./k/keys').twitterKeys;
-const Twitter = require('twitter');
-const spotify = require('spotify');
+const https = require("https");
 
-var client = new Twitter({
 
-    // consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    // consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    // access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-    // access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-    consumer_key: credentials.consumer_key,
-    consumer_secret: credentials.consumer_secret,
-    access_token_key: credentials.access_token_key,
-    access_token_secret: credentials.access_token_secret,
-});
 
-const firstArg = process.argv[2];
+
 console.log('~~~~~~~~~~~~');
 // console.log(credentials.consumer_key);
 
-let tweet = (user, options) => {
-    console.log(process.argv);
-    console.log("jello")
-};
-// tweet();
-let noodleTweet = { screen_name: 'Nicholaor' };
+
 
 // function MessageBuild
 // constructor should include date and the text 
@@ -38,61 +20,82 @@ let noodleTweet = { screen_name: 'Nicholaor' };
 
 // var st = new StreamTweets(credentials);
 
+
+
+
+
+
+
+// }
+
+// const options = process.argv.slice(2);
+
+// // .join(' ')
+// for (var i = 0; i < options.length; i++) {
+//     if(options[i] === "my-tweets"){
+//         optionsParser(options[i]);
+//     }else if(options[i] === "spotify-this-song"){
+//         optionsParser(options[i]);
+//     }
+// }
+
+
+// function optionsParser() {
+
+//     switch (options) {
+//         case "my-tweets":
+//             getData();
+//             break;
+//         case "thunder":
+//             console.log('thunders');
+//             break;
+//         default:
+//             console.log('do not recognize that command');
+
+
+//     }
+
+// }
+
 function printData(time, date, data) {
-	// should print to console
-	// should append to file
+    // should print to console
+    // should append to file
     const viewData = `${time}, ${date}, ${data}`;
     // console.log(viewData);
 }
 
+program
+ .command('my-tweets [default]', 'gather tweets')
+ .command('spotify-this-song <query>','search song')
+ .command('movie-this [query]', 'search movie')
+ .command('do-what-it-says [argument]', 'do whatever')
 
-function getData() {
+ .parse(process.argv);
 
-    const request = client.get('statuses/user_timeline', (error, tweets, response) => {
-        if (!error && response.statusCode === 200) {
-        	// console.log(JSON.stringify(response, null, '\t'));
-
-        	let body = '';
-        	response.on('tweets', data => {
-        		body += tweets.toString();
-        	});
-
-        	response.on('end', () => {
-        		const gatheredObject = JSON.parse(body);
-        		console.dir(body);
-        	});
-
-
-            // console.dir(tweets[3].text);
-            for (var i = 0; i < tweets.length; i++) {
-            		console.log( i + ' ~~~~~~~~~~')
-            		console.log('                 ')
-            		console.log(tweets[i].created_at);
-            		console.log(tweets[i].text);
-
-            }
-
-        }
-    });
-
-
-
-}
-
-
-if(firstArg === "my-tweets"){
-	//working now but would like to use the printData()
-	getData();
-
-}
 // program
-// 	.command('my-tweets [default]')
-// 	.description('get the tweets')
-// 	.option('-a, --all', 'list all files and folders')
-// 	.option('-l, --long', '')
-// 	.action(getData());
+//   .version('0.0.1')
+//   .option('-v, --chdir <path>', 'change the working directory')
+//   .option('-c, --config <path>', 'set config path. defaults to ./deploy.conf')
+//   .option('-T, --no-tests', 'ignore test hook');
 
-// program 
-// 	.command('noodle []')
-// 	.action(console.log('noodleTweet'));
+// program
+//   .command('my-tweets [opt]')
+//   .description('get tweets')
+//   .action(function(env, options){
+//     getData();
+//   });
+
+// program
+//   .command('spotify-this-song <song>')
+//   .description('execute the given remote cmd')
+//   .action(function(song){
+//     console.log(song);
+//   });
+
+// program
+//   .command('nude')
+//   .action(function(env){
+//     console.log('deploying "%s"', env);
+//   });
+
 // program.parse(process.argv);
