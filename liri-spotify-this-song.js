@@ -22,6 +22,8 @@ if (inputs.length === 2) {
     songSearch(userInput);
 }
 
+
+// module.exports = {}
 function songSearch(searchObj) {
     spotify.search(searchObj, function(err, data) {
 
@@ -57,4 +59,12 @@ function songSearch(searchObj) {
 
 
 
+
+// module.exports = {
+// 	songSearch: function(){
+
+// 	}
+
+
+// };
 

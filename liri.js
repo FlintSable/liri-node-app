@@ -12,6 +12,6 @@ program
  .command('my-tweets [default]', 'gather tweets')
  .command('spotify-this-song <query>','search song')
  .command('movie-this [query]', 'search movie')
- .command('do-what-it-says [argument]', 'do whatever')
+ .command('do-what-it-says [argument]', 'file execute')
  .parse(process.argv);
 
