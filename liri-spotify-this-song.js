@@ -1,48 +1,63 @@
 const spotify = require('spotify');
+var browser = require('child_process');
+var os = require('os');
+var confirm = require('inquirer-confirm');
 // console.log(__filename);
 
 var inputs = process.argv;
 var songQuery = process.argv.slice(2).join(' ');
 
 
-function SearchConstructor(arg1, arg2){
-    this.type= arg1;
-    this.query= arg2;
-};
+function SearchConstructor(arg1, arg2) {
+    this.type = arg1;
+    this.query = arg2;
+}
 
 
-if (inputs.length === 2){
+if (inputs.length === 2) {
     console.log('no args');
     var defaultInput = new SearchConstructor('track', 'Ace of Base');
     // console.log(defaultInput);
     // var defaultInput = defaultInput.prototype.id = "0hrBpAOgrt8RXigk83LLNE";
     // spotify hash id
     songSearch(defaultInput);
-} else if (songQuery.length > 0){
-    console.log('args')  
+} else if (songQuery.length > 0) {
+    console.log('args');
     var userInput = new SearchConstructor('track', songQuery);
     songSearch(userInput);
 }
 
-// object factory
-
-
-
-// console.log(defaultInput);
-
-
 function songSearch(searchObj) {
-    // { type: 'track', query: 'black sands' }
     spotify.search(searchObj, function(err, data) {
 
         if (err) {
             console.log('Error occurred: ' + err);
             return;
         } else if (!err) {
-            // if no data do then head back to the prompt
-            // console.log(data);
-            console.log(data.tracks.items[0]);
-            console.log(data.tracks.items[0].artists[0].name);
+            console.log('Artist: ' + data.tracks.items[0] + '\n' +
+                		'Song Name: ' + data.tracks.items[0].artists[0].name + '\n' +
+                		'Album Name: ' + data.tracks.items[0].album.name + '\n'
+            );
+
+
+            confirm('Would you like to hear a sample?').then(function confirmed() {
+                if (os.platform() === 'win32') {
+                    browser.exec("Chrome.exe --window-position=0,0 --app=" + data.tracks.items[0].preview_url);
+                } else if (os.platform === 'darwin') {
+                    browser.exec("/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --app=" + data.tracks.items[0].preview_url);
+                }
+            }, function canceled() {
+                console.log('Preview Url: ' + data.tracks.items[0].preview_url);
+            });
+
+
+
+            // console.log(data.tracks.items[0]);
+            // console.log(data.tracks.items[0].artists[0].name);
+            // console.log(data.tracks.items[0].album.name);
+
+            // opn(data.tracks.items[0].preview_url, {app: 'chrome'});
+            // console.log(data.tracks.items[0].preview_url);
             // var seachResult = data.tracks.items[0];
             // console.log(searchResult);
             // console.log(seachResult.name);
@@ -54,16 +69,10 @@ function songSearch(searchObj) {
             // var preview = preview_url
             // var album = 
         }
-
-        // Do something with 'data' 
     });
-
 }
 
 
-function CustomView(artist, songName, preview, album){
-
-}
 
 
 // lookup: function({ type: 'artist OR album OR track', id: 'Spotify ID Hash' }, hollaback)
