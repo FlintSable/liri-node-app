@@ -11,27 +11,18 @@ function SearchConstructor(arg1, arg2){
 };
 
 
-switch(inputs.length || songQuery.length){
-    case (inputs.length === 2):
-        console.log('no args');
-        var defaultInput = new SearchConstructor('track', 'black sands');
-        songSearch(defaultInput);
-        break;
-    case (songQuery.length > 0):
-        console.log('args')
-        break;
-
+if (inputs.length === 2){
+    console.log('no args');
+    var defaultInput = new SearchConstructor('track', 'Ace of Base');
+    // console.log(defaultInput);
+    // var defaultInput = defaultInput.prototype.id = "0hrBpAOgrt8RXigk83LLNE";
+    // spotify hash id
+    songSearch(defaultInput);
+} else if (songQuery.length > 0){
+    console.log('args')  
+    var userInput = new SearchConstructor('track', songQuery);
+    songSearch(userInput);
 }
-
-
-
-// if (inputs.length === 2){
-//     console.log('no args');
-//     var defaultInput = new SearchConstructor('track', 'black sands');
-//     songSearch(defaultInput);
-// } else if (songQuery.length > 0){
-//     console.log('args')
-// }
 
 // object factory
 
@@ -49,8 +40,9 @@ function songSearch(searchObj) {
             return;
         } else if (!err) {
             // if no data do then head back to the prompt
-            console.log(data);
-            // console.log(data.tracks.items[0]);
+            // console.log(data);
+            console.log(data.tracks.items[0]);
+            console.log(data.tracks.items[0].artists[0].name);
             // var seachResult = data.tracks.items[0];
             // console.log(searchResult);
             // console.log(seachResult.name);
