@@ -8,29 +8,18 @@
 - node liri.js my-tweets
 - node liri.js spotify-this-song songName
 - node liri.js movie-this movieName
-- node liri.js do-what-it-says 
 
 
 
 
 ## Technologies Used
 - npm
-- AJAX for API GET requests
+- comander package for option parsing
 
 ## Code Explaination
-- Here, here
-- Here, here
-- Here, here
-- Here, here
+- my-tweets accesses and displays 20 of my last tweets
+- spotify-this-song will return a seach of you choice and prompt for a sample
+- movie-this will return the movie you have searched
+- movie searches go to a log file
 
 
--------------
-
-##Here is an example of what a Readme could look like:
-
-### AJAX Request to Giphy (Example)
-I wrote this applcation. 
-
-```
-code goes here
-```
