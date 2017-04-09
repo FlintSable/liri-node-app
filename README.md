@@ -6,10 +6,10 @@
 
 
 ```
-node liri.js help
-node liri.js my-tweets
-node liri.js spotify-this-song songName
-node liri.js movie-this movieName
+ $ node liri.js help
+ $ node liri.js my-tweets
+ $ node liri.js spotify-this-song songName
+ $ node liri.js movie-this movieName
 ```
 
 
