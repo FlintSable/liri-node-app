@@ -1,8 +1,17 @@
-# HW - {Liri}
+# Week 10 - {Liri}
 -------------
 
 ## Requirements
 #### Add a simple description of what the HW requirements were
+
+
+```
+node liri.js help
+node liri.js my-tweets
+node liri.js spotify-this-song songName
+node liri.js movie-this movieName
+```
+
 
 - node liri.js help
 - node liri.js my-tweets
