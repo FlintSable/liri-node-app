@@ -1,5 +1,7 @@
 const request = require('request');
 var fs = require("fs");
+var chalk = require('chalk');
+
 
 
 var inputs = process.argv;
@@ -24,7 +26,7 @@ function logger(putInFile){
 
   // If no error is experienced, we'll log the phrase "Content Added" to our node console.
   else {
-    console.log(putInFile);
+    // console.log(putInFile);
   }
 
 });
@@ -44,7 +46,7 @@ function movieSearch(movieQuery){
                 		'* ' + movie.Plot + '\n' + 
                 		'* ' + movie.Actors + '\n' + 
                 		'~~~~~~~~~~~~~~~';
-        console.log(output);
+        console.log(chalk.blue.bgWhite(output));
         logger(output);
 
 

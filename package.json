@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/FlintSable/liri-node-app#readme",
   "dependencies": {
+    "chalk": "^1.1.3",
     "commander": "^2.9.0",
     "fs": "0.0.1-security",
     "inquirer-confirm": "^0.2.2",

@@ -2,6 +2,7 @@
 
 const credentials = require('./k/keys').twitterKeys;
 const Twitter = require('twitter');
+var chalk = require('chalk');
 
 
 var client = new Twitter({
@@ -28,12 +29,12 @@ function getData() {
 
 
             for (var i = 0; i < tweets.length; i++) {
-            	console.log('~~~~~ '+ i +' ~~~~~' + '\n' +
-            				tweets[i].created_at + '\n' + 
-            				tweets[i].text + '\n' +
-            				' ~  ~  ~~ : ~~ ~  ~ ' + '\n' + 
-            				'                   '
-            		);
+                var tweetInfo = '~~~~~ '+ i +' ~~~~~' + '\n' +
+                            tweets[i].created_at + '\n' + 
+                            tweets[i].text + '\n' +
+                            ' ~  ~  ~~ : ~~ ~  ~ ' + '\n' + 
+                            '                   ';
+            	console.log(chalk.blue.bgWhite(tweetInfo));
 
             }
 
