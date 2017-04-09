@@ -50,9 +50,6 @@ function songSearch(searchObj) {
                 console.log('Preview Url: ' + data.tracks.items[0].preview_url);
             });
 
-
-
-
         }
     });
 }

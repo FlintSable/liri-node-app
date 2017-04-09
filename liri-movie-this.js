@@ -1,4 +1,5 @@
 const request = require('request');
+var fs = require("fs");
 
 
 var inputs = process.argv;
@@ -13,20 +14,42 @@ if (inputs.length === 2) {
 }
 
 
+function logger(putInFile){
+    fs.appendFile('./assets/log.log', putInFile, function(err) {
+
+  // If an error was experienced we say it.
+  if (err) {
+    console.log(err);
+  }
+
+  // If no error is experienced, we'll log the phrase "Content Added" to our node console.
+  else {
+    console.log(putInFile);
+  }
+
+});
+
+}
 
 function movieSearch(movieQuery){
 	queryUrl = "http://www.omdbapi.com/?t=" + movieQuery + "&plot=short"
 	request.get(queryUrl, (err, response, movie) =>{
 		movie = JSON.parse(movie);
-		console.log('* ' + movie.Title + '\n' +
+		var output =    '~~~~~~~~~~~~~~~' + '\n' + 
+                        '* ' + movie.Title + '\n' +
                 		'* ' + movie.Year + '\n' +
                 		'* ' + movie.Imdbraiting + '\n' + 
                 		'* ' + movie.Country + '\n' + 
                 		'* ' + movie.Language + '\n' + 
                 		'* ' + movie.Plot + '\n' + 
                 		'* ' + movie.Actors + '\n' + 
-                		'~~~~~~~~~~~~~~~'
-            );
+                		'~~~~~~~~~~~~~~~';
+        console.log(output);
+        logger(output);
+
+
+
+
 
 	}
 )};
